@@ -1,0 +1,392 @@
+[
+  {
+    "device_id": "WEAR-001",
+    "patient_id": "c20a538f-72ce-4f0e-9018-aa51acf7dbd3",
+    "timestamp": "2025-09-01T15:51:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.51,
+      "stride_variability_pct": 13.2,
+      "daily_steps": 1766,
+      "fall_detected": false
+    },
+    "signal_quality": 0.97
+  },
+  {
+    "device_id": "WEAR-001",
+    "patient_id": "c20a538f-72ce-4f0e-9018-aa51acf7dbd3",
+    "timestamp": "2025-09-02T14:20:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.96,
+      "stride_variability_pct": 5.7,
+      "daily_steps": 4450,
+      "fall_detected": false
+    },
+    "signal_quality": 0.88
+  },
+  {
+    "device_id": "WEAR-001",
+    "patient_id": "c20a538f-72ce-4f0e-9018-aa51acf7dbd3",
+    "timestamp": "2025-09-03T17:39:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.26,
+      "stride_variability_pct": 6.1,
+      "daily_steps": 5115,
+      "fall_detected": false
+    },
+    "signal_quality": 0.95
+  },
+  {
+    "device_id": "WEAR-002",
+    "patient_id": "20d0b130-9fd1-4cc8-957d-147fb527e173",
+    "timestamp": "2025-09-01T12:39:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.89,
+      "stride_variability_pct": 19.5,
+      "daily_steps": 3637,
+      "fall_detected": false
+    },
+    "signal_quality": 0.87
+  },
+  {
+    "device_id": "WEAR-002",
+    "patient_id": "20d0b130-9fd1-4cc8-957d-147fb527e173",
+    "timestamp": "2025-09-02T08:30:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.83,
+      "stride_variability_pct": 5,
+      "daily_steps": 2645,
+      "fall_detected": false
+    },
+    "signal_quality": 0.98
+  },
+  {
+    "device_id": "WEAR-002",
+    "patient_id": "20d0b130-9fd1-4cc8-957d-147fb527e173",
+    "timestamp": "2025-09-03T16:14:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.77,
+      "stride_variability_pct": 21.2,
+      "daily_steps": 4046,
+      "fall_detected": false
+    },
+    "signal_quality": 0.93
+  },
+  {
+    "device_id": "WEAR-003",
+    "patient_id": "e6b8d74e-065f-4ccb-bb99-b1529cc76717",
+    "timestamp": "2025-09-01T06:37:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.89,
+      "stride_variability_pct": 8.7,
+      "daily_steps": 2687,
+      "fall_detected": false
+    },
+    "signal_quality": 0.99
+  },
+  {
+    "device_id": "WEAR-003",
+    "patient_id": "e6b8d74e-065f-4ccb-bb99-b1529cc76717",
+    "timestamp": "2025-09-02T07:58:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.01,
+      "stride_variability_pct": 27.4,
+      "daily_steps": 500,
+      "fall_detected": false
+    },
+    "signal_quality": 0.96
+  },
+  {
+    "device_id": "WEAR-003",
+    "patient_id": "e6b8d74e-065f-4ccb-bb99-b1529cc76717",
+    "timestamp": "2025-09-03T09:16:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.0,
+      "stride_variability_pct": 7.6,
+      "daily_steps": 5287,
+      "fall_detected": false
+    },
+    "signal_quality": 0.94
+  },
+  {
+    "device_id": "WEAR-004",
+    "patient_id": "c095f2ba-d949-49df-bd22-d5e6e755d871",
+    "timestamp": "2025-09-01T16:25:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.91,
+      "stride_variability_pct": 18.1,
+      "daily_steps": 5326,
+      "fall_detected": false
+    },
+    "signal_quality": 0.95
+  },
+  {
+    "device_id": "WEAR-004",
+    "patient_id": "c095f2ba-d949-49df-bd22-d5e6e755d871",
+    "timestamp": "2025-09-02T13:49:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.86,
+      "stride_variability_pct": 22.4,
+      "daily_steps": 3760,
+      "fall_detected": false
+    },
+    "signal_quality": 0.97
+  },
+  {
+    "device_id": "WEAR-004",
+    "patient_id": "c095f2ba-d949-49df-bd22-d5e6e755d871",
+    "timestamp": "2025-09-03T14:03:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.13,
+      "stride_variability_pct": 9.8,
+      "daily_steps": 3213,
+      "fall_detected": false
+    },
+    "signal_quality": 0.96
+  },
+  {
+    "device_id": "WEAR-005",
+    "patient_id": "49a9f61f-fc92-4b31-8824-8208abd73dd3",
+    "timestamp": "2025-09-01T11:03:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.78,
+      "stride_variability_pct": 11.9,
+      "daily_steps": 1761,
+      "fall_detected": false
+    },
+    "signal_quality": 0.89
+  },
+  {
+    "device_id": "WEAR-005",
+    "patient_id": "49a9f61f-fc92-4b31-8824-8208abd73dd3",
+    "timestamp": "2025-09-02T18:31:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.03,
+      "stride_variability_pct": 15.2,
+      "daily_steps": 3691,
+      "fall_detected": false
+    },
+    "signal_quality": 0.95
+  },
+  {
+    "device_id": "WEAR-005",
+    "patient_id": "49a9f61f-fc92-4b31-8824-8208abd73dd3",
+    "timestamp": "2025-09-03T08:34:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.95,
+      "stride_variability_pct": 25.7,
+      "daily_steps": 2843,
+      "fall_detected": false
+    },
+    "signal_quality": 0.93
+  },
+  {
+    "device_id": "WEAR-006",
+    "patient_id": "6c91a98d-8988-4e93-9548-19c88b51b8bb",
+    "timestamp": "2025-09-01T21:33:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.05,
+      "stride_variability_pct": 20.6,
+      "daily_steps": 4075,
+      "fall_detected": false
+    },
+    "signal_quality": 0.91
+  },
+  {
+    "device_id": "WEAR-006",
+    "patient_id": "6c91a98d-8988-4e93-9548-19c88b51b8bb",
+    "timestamp": "2025-09-02T07:25:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.93,
+      "stride_variability_pct": 12.3,
+      "daily_steps": 5432,
+      "fall_detected": false
+    },
+    "signal_quality": 0.89
+  },
+  {
+    "device_id": "WEAR-006",
+    "patient_id": "6c91a98d-8988-4e93-9548-19c88b51b8bb",
+    "timestamp": "2025-09-03T17:42:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.99,
+      "stride_variability_pct": 10.9,
+      "daily_steps": 5096,
+      "fall_detected": false
+    },
+    "signal_quality": 0.95
+  },
+  {
+    "device_id": "WEAR-007",
+    "patient_id": "61193876-d10f-4aa0-a66e-27508eb41880",
+    "timestamp": "2025-09-01T08:37:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.0,
+      "stride_variability_pct": 7.0,
+      "daily_steps": 3787,
+      "fall_detected": false
+    },
+    "signal_quality": 0.89
+  },
+  {
+    "device_id": "WEAR-007",
+    "patient_id": "61193876-d10f-4aa0-a66e-27508eb41880",
+    "timestamp": "2025-09-02T06:35:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.01,
+      "stride_variability_pct": 6.3,
+      "daily_steps": 6909,
+      "fall_detected": false
+    },
+    "signal_quality": 0.95
+  },
+  {
+    "device_id": "WEAR-007",
+    "patient_id": "61193876-d10f-4aa0-a66e-27508eb41880",
+    "timestamp": "2025-09-03T12:54:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.97,
+      "stride_variability_pct": 8.9,
+      "daily_steps": 4265,
+      "fall_detected": false
+    },
+    "signal_quality": 0.89
+  },
+  {
+    "device_id": "WEAR-008",
+    "patient_id": "1950c4e4-72ee-44b4-8cb3-d86e445e4ea2",
+    "timestamp": "2025-09-01T20:15:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.83,
+      "stride_variability_pct": 14.4,
+      "daily_steps": 4518,
+      "fall_detected": false
+    },
+    "signal_quality": 0.93
+  },
+  {
+    "device_id": "WEAR-008",
+    "patient_id": "1950c4e4-72ee-44b4-8cb3-d86e445e4ea2",
+    "timestamp": "2025-09-02T07:44:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.78,
+      "stride_variability_pct": 11.3,
+      "daily_steps": 3636,
+      "fall_detected": false
+    },
+    "signal_quality": 0.97
+  },
+  {
+    "device_id": "WEAR-008",
+    "patient_id": "1950c4e4-72ee-44b4-8cb3-d86e445e4ea2",
+    "timestamp": "2025-09-03T12:11:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.95,
+      "stride_variability_pct": 15.8,
+      "daily_steps": 4282,
+      "fall_detected": false
+    },
+    "signal_quality": 0.96
+  },
+  {
+    "device_id": "WEAR-009",
+    "patient_id": "6ed7676e-3944-412a-bef7-f104cc1961d3",
+    "timestamp": "2025-09-01T13:04:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.7,
+      "stride_variability_pct": 20.8,
+      "daily_steps": 3375,
+      "fall_detected": false
+    },
+    "signal_quality": 0.9
+  },
+  {
+    "device_id": "WEAR-009",
+    "patient_id": "6ed7676e-3944-412a-bef7-f104cc1961d3",
+    "timestamp": "2025-09-02T15:31:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.93,
+      "stride_variability_pct": 12.9,
+      "daily_steps": 4379,
+      "fall_detected": false
+    },
+    "signal_quality": 0.91
+  },
+  {
+    "device_id": "WEAR-009",
+    "patient_id": "6ed7676e-3944-412a-bef7-f104cc1961d3",
+    "timestamp": "2025-09-03T10:05:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.8,
+      "stride_variability_pct": 18.1,
+      "daily_steps": 4053,
+      "fall_detected": false
+    },
+    "signal_quality": 0.94
+  },
+  {
+    "device_id": "WEAR-010",
+    "patient_id": "a1404169-e91c-4077-99a3-c6deccff522d",
+    "timestamp": "2025-09-01T19:30:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.88,
+      "stride_variability_pct": 19.2,
+      "daily_steps": 1368,
+      "fall_detected": false
+    },
+    "signal_quality": 0.96
+  },
+  {
+    "device_id": "WEAR-010",
+    "patient_id": "a1404169-e91c-4077-99a3-c6deccff522d",
+    "timestamp": "2025-09-02T19:23:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 1.13,
+      "stride_variability_pct": 8.0,
+      "daily_steps": 5146,
+      "fall_detected": false
+    },
+    "signal_quality": 0.97
+  },
+  {
+    "device_id": "WEAR-010",
+    "patient_id": "a1404169-e91c-4077-99a3-c6deccff522d",
+    "timestamp": "2025-09-03T14:02:00",
+    "domain": "mobility",
+    "metrics": {
+      "gait_speed_mps": 0.89,
+      "stride_variability_pct": 10.9,
+      "daily_steps": 500,
+      "fall_detected": false
+    },
+    "signal_quality": 1.0
+  }
+]
