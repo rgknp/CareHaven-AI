@@ -33,20 +33,43 @@ def simulate_mobility_metrics():
     }, signal_quality
 
 
-def generate_dataset(num_patients: int, days: int, start_date: datetime):
-    """Generate a list of mobility records for all patients across days."""
+def generate_dataset(num_patients: int, days: int, start_date: datetime, patient_profiles=None):
+    """Generate a list of mobility records for all patients across days.
+
+    If patient_profiles is provided (list of dict with patient_id and device_ids.wearable),
+    reuse those IDs; otherwise synthesize new IDs.
+    """
     if num_patients <= 0:
         raise ValueError("num_patients must be > 0")
     if days <= 0:
         raise ValueError("days must be > 0")
 
-    device_ids = [f'WEAR-{i:03d}' for i in range(1, num_patients + 1)]
+    provided = False
+    if patient_profiles:
+        provided = True
+        # Trim or slice list to requested size
+        if len(patient_profiles) < num_patients:
+            print(f"[WARN] Requested {num_patients} patients but only {len(patient_profiles)} profiles available. Reducing.")
+            num_patients = len(patient_profiles)
+        profiles_slice = patient_profiles[:num_patients]
+        id_pairs = []
+        for p in profiles_slice:
+            pid = p.get('patient_id')
+            wearable = (p.get('device_ids') or {}).get('wearable')
+            if not pid or not wearable:
+                continue
+            id_pairs.append((pid, wearable))
+        if len(id_pairs) < num_patients:
+            print(f"[WARN] Some profiles missing wearable IDs; generating synthetic for missing.")
+        # fill remaining with synthetic
+        while len(id_pairs) < num_patients:
+            idx = len(id_pairs) + 1
+            id_pairs.append((str(uuid.uuid4()), f'WEAR-{idx:03d}'))
+    else:
+        id_pairs = [(str(uuid.uuid4()), f'WEAR-{i:03d}') for i in range(1, num_patients + 1)]
+
     all_records = []
-
-    for patient_idx in range(num_patients):
-        patient_id = str(uuid.uuid4())
-        device_id = device_ids[patient_idx]
-
+    for patient_idx, (patient_id, device_id) in enumerate(id_pairs):
         for day in range(days):
             timestamp = start_date + timedelta(
                 days=day,
@@ -63,6 +86,8 @@ def generate_dataset(num_patients: int, days: int, start_date: datetime):
                 'signal_quality': signal_quality
             }
             all_records.append(record)
+    if provided:
+        print(f"Reused {len(id_pairs)} patient IDs from profiles.")
     return all_records
 
 
@@ -90,6 +115,7 @@ def parse_args():
     parser.add_argument('--start-date', default='2025-09-01', help='Start date (YYYY-MM-DD)')
     parser.add_argument('--output-dir', default=None, help='Directory to place output files (default: ../data)')
     parser.add_argument('--csv', action='store_true', help='Also export a CSV (requires pandas)')
+    parser.add_argument('--patient-profiles', default=None, help='Path to patient_profiles.json to reuse patient/device IDs')
     return parser.parse_args()
 
 
@@ -107,8 +133,26 @@ def main():
         # Place outputs in a sibling 'data' directory to this script's parent package
         output_dir = (Path(__file__).resolve().parent.parent / 'data').resolve()
 
-    print(f"Generating dataset: patients={args.patients}, days={args.days}, start={start_date.date()} -> {output_dir}")
-    records = generate_dataset(args.patients, args.days, start_date)
+    patient_profiles = None
+    if args.patient_profiles:
+        pp_path = Path(args.patient_profiles).expanduser().resolve()
+        if not pp_path.exists():
+            raise SystemExit(f"Provided --patient-profiles does not exist: {pp_path}")
+        try:
+            with pp_path.open('r', encoding='utf-8') as f:
+                patient_profiles = json.load(f)
+            if not isinstance(patient_profiles, list):
+                raise SystemExit('Patient profiles JSON must be a list of objects.')
+        except json.JSONDecodeError as e:
+            raise SystemExit(f'Failed to parse patient profiles JSON: {e}')
+
+    intended_patients = args.patients
+    if patient_profiles and intended_patients > len(patient_profiles):
+        print(f"[INFO] Reducing patients from {intended_patients} to {len(patient_profiles)} (available profiles).")
+        intended_patients = len(patient_profiles)
+
+    print(f"Generating dataset: patients={intended_patients}, days={args.days}, start={start_date.date()} -> {output_dir}")
+    records = generate_dataset(intended_patients, args.days, start_date, patient_profiles=patient_profiles)
     json_path, csv_path = write_outputs(records, output_dir, args.csv)
     print(f"Wrote JSON: {json_path}")
     if csv_path:

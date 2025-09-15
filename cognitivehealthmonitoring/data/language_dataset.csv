@@ -1,0 +1,16 @@
+device_id,patient_id,timestamp,domain,signal_quality,task_type,metrics_verbal_fluency_words,metrics_avg_pause_ms,metrics_articulation_rate_wps,metrics_sentiment_score
+SPK-001,e2dfbd35-d3a5-45d7-bb19-38ed8acd484f,2025-09-01T11:38:00,language,0.98,verbal_fluency_test,16,772,2.8,0.45
+SPK-001,e2dfbd35-d3a5-45d7-bb19-38ed8acd484f,2025-09-02T10:32:00,language,0.99,verbal_fluency_test,22,1351,2.43,0.47
+SPK-001,e2dfbd35-d3a5-45d7-bb19-38ed8acd484f,2025-09-03T08:38:00,language,0.97,verbal_fluency_test,22,1534,2.7,0.44
+SPK-002,63474fb6-94a6-424a-a296-d2182d07fdb0,2025-09-01T10:33:00,language,0.97,verbal_fluency_test,30,1226,2.51,0.81
+SPK-002,63474fb6-94a6-424a-a296-d2182d07fdb0,2025-09-02T08:15:00,language,0.95,verbal_fluency_test,25,973,2.71,0.8
+SPK-002,63474fb6-94a6-424a-a296-d2182d07fdb0,2025-09-03T10:04:00,language,1.0,verbal_fluency_test,27,1145,2.67,0.77
+SPK-003,a3845003-2d6f-4938-b972-fc78f7024667,2025-09-01T11:22:00,language,0.99,verbal_fluency_test,25,1577,2.53,0.51
+SPK-003,a3845003-2d6f-4938-b972-fc78f7024667,2025-09-02T11:08:00,language,0.98,verbal_fluency_test,25,1666,2.24,0.5
+SPK-003,a3845003-2d6f-4938-b972-fc78f7024667,2025-09-03T09:55:00,language,0.99,verbal_fluency_test,25,1613,2.06,0.48
+SPK-004,0890c7ca-1d83-4d31-9e7f-b32162840337,2025-09-01T10:13:00,language,0.97,verbal_fluency_test,17,1403,1.09,0.35
+SPK-004,0890c7ca-1d83-4d31-9e7f-b32162840337,2025-09-02T09:25:00,language,0.96,verbal_fluency_test,13,1472,1.42,0.48
+SPK-004,0890c7ca-1d83-4d31-9e7f-b32162840337,2025-09-03T09:16:00,language,0.95,verbal_fluency_test,15,1515,1.29,0.37
+SPK-005,8d526ca2-9283-49c4-94f3-2b9b9f8c86f0,2025-09-01T08:56:00,language,0.95,verbal_fluency_test,18,1874,1.95,0.62
+SPK-005,8d526ca2-9283-49c4-94f3-2b9b9f8c86f0,2025-09-02T08:56:00,language,0.98,verbal_fluency_test,16,1712,1.84,0.59
+SPK-005,8d526ca2-9283-49c4-94f3-2b9b9f8c86f0,2025-09-03T08:05:00,language,0.99,verbal_fluency_test,24,1334,1.8,0.63
