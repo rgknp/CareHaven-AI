@@ -1,0 +1,18 @@
+# Added by assistant to exclude large generated data files
+cognitivehealthmonitoring/dataproducers/data/multidomain_cognitive_dataset.json
+# General data artifacts
+*.csv
+*.parquet
+*.pkl
+*.pickle
+*.feather
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
