@@ -12,6 +12,7 @@ All scripts live in `cognitivehealthmonitoring/dataproducers/` and write outputs
 | `simulate_language_data.py` | Language / verbal fluency | verbal_fluency_words, avg_pause_ms, articulation_rate_wps, sentiment_score, signal_quality | Longitudinal mild trends + intra-day noise; pause inversely tied to fluency. |
 | `simulate_executive_function_data.py` | Executive function testing | tmt_b_completion_sec, errors, symbol_digit_correct | Practice effect then plateau/decline; cognitive baseline influences speed/accuracy. |
 | `simulate_memory_data.py` | Memory recall (MoCA-style) | immediate_recall_correct, delayed_recall_correct, intrusion_errors | Short practice effect; optional mild delayed decline for low baseline cognition. |
+| `simulate_multidomain_cognitive_data.py` | Unified multi-domain session record | nested: attention, executive_function, memory, orientation, processing_speed, mood_behavior | One JSON record per patient per day; enforces profile reuse; strengthened cross-domain correlations. |
 
 All scripts support:
 - `--patients` number of patients (auto-reduced if fewer profiles provided)
@@ -24,7 +25,7 @@ All scripts support:
 
 ## 🧬 Data Flow & Recommended Run Order
 ```
-patient_profiles -> mobility / language / executive_function / memory
+patient_profiles -> (mobility | language | executive_function | memory | unified_multidomain)
 ```
 1. Generate baseline patient profiles.
 2. Generate modality-specific datasets (order not strictly required, but using the same profiles ensures aligned `patient_id`).
@@ -66,6 +67,53 @@ python cognitivehealthmonitoring/dataproducers/simulate_executive_function_data.
 python cognitivehealthmonitoring/dataproducers/simulate_memory_data.py --patients 1000 --days 30 --patient-profiles cognitivehealthmonitoring/data/patient_profiles.json --seed 4004 --csv
 ```
 
+### 6. Unified Multi-Domain Dataset (All-in-one Sessions)
+Generates a single longitudinal file with one nested record per patient per day capturing multiple cognitive/behavioral domains together. Recommended when you want pre-aligned features for direct model ingestion or sequence modeling.
+
+Key characteristics:
+- Derives per-patient latent baselines from `MMSE`, `MoCA`, and `depression_score`.
+- Applies practice effects (early days) and conditional mild decline for lower baseline cognition.
+- Cross-domain coupling: slower processing speed and higher pauses correlate with lower fluency; mood (sentiment/narrative) impacted by depression & decline.
+- Intrusion error probability incorporates recall gap, cognitive factor, and depression burden.
+- Enforces patient profile reuse unless `--allow-synthetic` explicitly set.
+
+Schema (per record):
+```json
+{
+	"device_id": "SPK-001",
+	"patient_id": "<uuid>",
+	"session_date": "2025-09-16T08:17:00",
+	"attention": {"digit_span_max": 6, "errors": 1, "latency_sec": 1.05},
+	"executive_function": {"verbal_fluency_words": 15, "articulation_rate_wps": 1.9, "avg_pause_ms": 910},
+	"memory": {"immediate_recall": 4, "delayed_recall": 3, "intrusion_errors": 0},
+	"orientation": {"date_correct": true, "city_correct": true},
+	"processing_speed": {"avg_reaction_time_ms": 680, "missed_trials": 0},
+	"mood_behavior": {"sentiment_score": 0.62, "narrative_coherence": 0.71}
+}
+```
+
+Run with explicit profile path:
+```bash
+python cognitivehealthmonitoring/dataproducers/simulate_multidomain_cognitive_data.py \
+	--patient-profiles cognitivehealthmonitoring/data/patient_profiles.json \
+	--patients 1000 --days 30 --seed 5005 --csv
+```
+
+Or let it search typical locations automatically:
+```bash
+python cognitivehealthmonitoring/dataproducers/simulate_multidomain_cognitive_data.py \
+	--patients 1000 --days 30 --profiles-search --seed 5005 --csv
+```
+
+Allow synthetic (no profile correlation – not recommended for longitudinal fusion):
+```bash
+python cognitivehealthmonitoring/dataproducers/simulate_multidomain_cognitive_data.py --patients 200 --days 14 --allow-synthetic --seed 6006
+```
+
+Output (by default) now lands in `cognitivehealthmonitoring/dataproducers/data/` for this script.
+
+Tip: Use this unified dataset directly for sequence models (Transformers, TCNs) without first joining multiple modality tables.
+
 ## 🔁 Reproducibility Tips
 - Set `--seed` consistently per domain to reproduce the modality while allowing cross-domain variance.
 - Store an experiment manifest (JSON/YAML) with seeds + command invocations.
@@ -98,6 +146,7 @@ print(merged.head())
 - Early decline detection using subtle trends (executive + memory + language synergy).
 - Multimodal feature fusion (concatenate daily aggregated metrics per domain).
 - Synthetic anomaly insertion for robustness testing.
+ - Direct multi-domain session modeling using the unified dataset (reduces join noise & missing alignment issues).
 
 ## 🧪 Extensibility Ideas
 | Enhancement | Description |
@@ -105,6 +154,7 @@ print(merged.head())
 | Missingness simulation | Randomly drop sessions to mimic adherence issues. |
 | Acute event injection | Temporary deterioration across multiple domains. |
 | Unified orchestrator | One command to generate all datasets in order. |
+| Feature engineering script | Produce per-patient summary features (slopes, variability, composite scores). |
 | Progression labels | Add synthetic labels for supervised learning tasks. |
 | EDA Notebook | Automated profiling & visualization starter. |
 

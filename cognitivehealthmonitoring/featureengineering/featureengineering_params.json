@@ -1,0 +1,22 @@
+{
+  "LAGS": [1, 7, 14],
+  "ROLLING_WINDOWS": [7, 14, 30],
+  "SLOPE_WINDOW": 30,
+  "SPIKE_Z_THRESHOLD": 2.5,
+  "MIN_HISTORY_DAYS": 14,
+  "SEED": 42,
+  "N_FOLDS": 5,
+  "LGB_PARAMS": {
+    "objective": "regression",
+    "metric": ["mae","rmse"],
+    "learning_rate": 0.03,
+    "num_leaves": 48,
+    "feature_fraction": 0.85,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 2,
+    "min_data_in_leaf": 40,
+    "max_depth": -1,
+    "verbosity": -1,
+    "seed": 42
+  }
+}
