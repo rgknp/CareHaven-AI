@@ -1,0 +1,15 @@
+{
+  "agent_id": "fall_prediction_01",
+  "agent_class": "hcintelligencelayer.agents.fallprediction.FallPredictionAgent",
+  "prediction_interval_seconds": 600,
+  "config": {
+    "data_sources": {
+      "clinical": { "source_type": "FHIR" },
+      "iot": { "source_type": "IOT" }
+    },
+    "prediction_model": {
+      "path": "/models/fall_risk_classifier.pkl"
+    },
+    "risk_threshold": 0.75
+  }
+}

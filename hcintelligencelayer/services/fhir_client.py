@@ -1,0 +1,2 @@
+class FHIRClient:
+    pass
