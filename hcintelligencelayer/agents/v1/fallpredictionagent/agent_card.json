@@ -1,0 +1,37 @@
+{
+  "name": "FallPredictionAgent",
+  "description": "An agent that assesses a patient's fall risk and generates notifications.",
+  "version": "1.0.0",
+  "url": "_BASE_URL_",
+  "model": "gpt-4.1",
+  "capabilities": [
+    {
+      "type": "skill",
+      "name": "predict_fall_risk",
+      "description": "Predicts a patient's fall risk based on clinical data and generates a notification.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "patient_id": {
+            "type": "string",
+            "description": "The unique identifier for the patient."
+          },
+          "age": {
+            "type": "integer",
+            "description": "The patient's age in years."
+          },
+          "mobility_score": {
+            "type": "integer",
+            "description": "A score from 1-10 indicating the patient's mobility."
+          },
+          "medication_list": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "A list of medications the patient is taking."
+          }
+        },
+        "required": ["patient_id", "age", "mobility_score"]
+      }
+    }
+  ]
+}

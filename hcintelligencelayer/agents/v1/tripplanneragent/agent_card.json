@@ -1,0 +1,34 @@
+{
+  "name": "TripPlannerAgent",
+  "description": "An agent that plans trips by combining information from various specialized agents.",
+  "version": "1.0.0",
+  "url": "_BASE_URL_",
+  "model": "gemini-2.5-pro",
+  "capabilities": [
+    {
+      "type": "skill",
+      "name": "plan_trip",
+      "description": "Plans a complete trip including weather, activities, and lodging.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "destination": {
+            "type": "string",
+            "description": "The destination city."
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The start date of the trip (YYYY-MM-DD)."
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "description": "The end date of the trip (YYYY-MM-DD)."
+          }
+        },
+        "required": ["destination", "start_date", "end_date"]
+      }
+    }
+  ]
+}
