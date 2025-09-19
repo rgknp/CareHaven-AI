@@ -104,7 +104,17 @@ def ingest_data(req: func.HttpRequest) -> func.HttpResponse:
                 result_text = result.decode('utf-8')
                 logging.info(f'Raw ML response text: {result_text}')
                 
-                ml_prediction_result = json.loads(result_text)
+                # Parse JSON response
+                try:
+                    ml_prediction_result = json.loads(result_text)
+                except json.JSONDecodeError as json_error:
+                    logging.error(f'Failed to parse ML response as JSON: {json_error}')
+                    raise
+                
+                # Double-check if we got a string that needs another parse (double-encoded JSON)
+                if isinstance(ml_prediction_result, str):
+                    logging.warning('ML response was double-encoded JSON string, parsing again')
+                    ml_prediction_result = json.loads(ml_prediction_result)
                 
                 logging.info('ML model prediction successful')
                 logging.info(f'ML response: {ml_prediction_result}')
