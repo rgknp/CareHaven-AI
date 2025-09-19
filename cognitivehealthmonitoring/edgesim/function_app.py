@@ -199,10 +199,10 @@ def send_to_edge_connector(data: Dict[str, Any]) -> bool:
 
 # ------------------------------ Azure Function ------------------------------ #
 
-@app.timer_trigger(schedule="*/20 * * * * *", arg_name="myTimer", run_on_startup=True,
+@app.timer_trigger(schedule="0 */2 * * * *", arg_name="myTimer", run_on_startup=True,
               use_monitor=False) 
 def datasim(myTimer: func.TimerRequest) -> None:
-    """Timer-triggered function that generates and sends cognitive data every 5 minutes."""
+    """Timer-triggered function that generates and sends cognitive data every 2 minutes."""
     
     if myTimer.past_due:
         logging.info('The timer is past due!')

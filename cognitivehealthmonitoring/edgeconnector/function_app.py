@@ -101,24 +101,29 @@ def ingest_data(req: func.HttpRequest) -> func.HttpResponse:
             
             with urllib.request.urlopen(ml_request, timeout=30) as response:
                 result = response.read()
-                ml_prediction_result = json.loads(result.decode('utf-8'))
+                result_text = result.decode('utf-8')
+                logging.info(f'Raw ML response text: {result_text}')
+                
+                ml_prediction_result = json.loads(result_text)
                 
                 logging.info('ML model prediction successful')
                 logging.info(f'ML response: {ml_prediction_result}')
+                logging.info(f'ML response type: {type(ml_prediction_result)}')
                 
                 # Extract cognitive index from ML model response
                 # Handle the standard ML model response format: {"predictions": [value]}
                 if isinstance(ml_prediction_result, dict):
+                    logging.info(f'ML response is dict with keys: {list(ml_prediction_result.keys())}')
                     if 'predictions' in ml_prediction_result and isinstance(ml_prediction_result['predictions'], list) and len(ml_prediction_result['predictions']) > 0:
                         enriched_data['cognitive_index'] = round(ml_prediction_result['predictions'][0], 4)
                         logging.info(f'Successfully extracted cognitive_index from ML predictions: {enriched_data["cognitive_index"]}')
                     else:
                         # Unknown dict format, use fallback
-                        logging.warning(f'Unexpected ML response dict format: {ml_prediction_result}')
+                        logging.warning(f'Unexpected ML response dict format - predictions key: {"predictions" in ml_prediction_result}, predictions type: {type(ml_prediction_result.get("predictions"))}, predictions length: {len(ml_prediction_result.get("predictions", []))}')
                         enriched_data['cognitive_index'] = round(random.uniform(0.1, 1.0), 4)
                 else:
                     # If we can't parse the ML response, use a fallback value
-                    logging.warning(f'Unexpected ML response format: {ml_prediction_result}')
+                    logging.warning(f'Unexpected ML response format - type: {type(ml_prediction_result)}, value: {ml_prediction_result}')
                     enriched_data['cognitive_index'] = round(random.uniform(0.1, 1.0), 4)
                 
         except urllib.error.HTTPError as error:
